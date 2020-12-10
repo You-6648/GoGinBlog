@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"GoGinBlog/routes"
+	"fmt"
+)
 
-func main(){
+func main() {
+	routes.InitRoutes()
 	fmt.Printf("Hello World")
 }
