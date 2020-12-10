@@ -16,7 +16,7 @@ var (
 	DbPassWord string
 )
 
-func Init() {
+func init() {
 	file, err := ini.Load("config/config.ini")
 	if err != nil {
 		fmt.Printf("%s", err)
