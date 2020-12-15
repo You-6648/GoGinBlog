@@ -8,7 +8,11 @@ import (
 
 func InitRoutes() {
 	gin.SetMode(until.AppMode)
+
 	r := gin.Default()
+	r.Use(gin.Logger())
+	r.Use(gin.Recovery())
+
 	router := r.Group("api/v1")
 	{
 		router.GET("hello", func(c *gin.Context) {
@@ -17,6 +21,14 @@ func InitRoutes() {
 			})
 		})
 	}
+	//s := &http.Server{
+	//	Addr: fmt.Sprintf(":%d", setting.HTTPPort),
+	//	Handler: r,
+	//	ReadTimeout: setting.ReadTimeout,
+	//	WriteTimeout: setting.WriteTimeout,
+	//	MaxHeaderBytes: 1 << 20,
+	//}
+	//s.ListenAndServe()
 	r.Run(until.HttpPort)
 
 }
